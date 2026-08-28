@@ -1,7 +1,7 @@
 kuhan_pituus = int(input("Anna kuhan pituus senttimetreinä: "))
 
-if kuhan_pituus <= 37:
-    print(f"Kuhasi on alamittainen {37-kuhan_pituus} sentillä. Laske kuha takaisin järveen.")
+if kuhan_pituus < 37:
+    print(f"Kuhasi on alimittainen {37-kuhan_pituus} sentillä. Päästä kuha takaisin kasvamaan.")
 
 else:
-    print("Kuhasi on sopivan kokoinen.")
+    print("Kuhasi on tarpeeksi iso!")
