@@ -4,6 +4,9 @@ luku = random.randint(1,10)
 arvaus = int(input("Arvaa luku 1-10: "))
 
 while arvaus != luku:
-    arvaus = int(input("Arvauksesi oli väärin, yritä uudelleen: "))
+    if arvaus < luku:
+        arvaus = int(input("Liian pieni arvaus, yritä uudelleen: "))
+    elif arvaus > luku:
+        arvaus = int(input("Liian suuri arvaus, yritä uudelleen: "))
 
-print(f"Arvasit luvun oikein, se oli {luku}.")
+print(f"Arvasit luvun oikein, luku oli {luku}.")

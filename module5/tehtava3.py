@@ -4,9 +4,9 @@ pienin_luku = luku
 
 while str(luku) != (""):
 
-    if int(luku) > int(suurin_luku):
+    if float(luku) > float(suurin_luku):
         suurin_luku = luku
-    if int(luku) < int(pienin_luku):
+    if float(luku) < float(pienin_luku):
         pienin_luku = luku
     else:
         print(luku)
