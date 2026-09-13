@@ -1,4 +1,5 @@
-from pelin_funktiot import pelaajan_tiedot, päävalikko, aloita_peli, tulosta_tiedot, lempi_peli, muu_tieto
+from päävalikon_funktiot import pelaajan_tiedot, päävalikko, tulosta_tiedot, lempi_peli, muu_tieto
+from pelin_funktiot import aloita_peli
 
 
 pelaajan_nimi, pelaajan_ikä = pelaajan_tiedot()
@@ -13,7 +14,7 @@ while True:
         continue
 
     if pyydetty_toiminto == 0:
-        print("\nOhjelma sulkeutuu.\n")
+        print("\nPeli sulkeutuu.\n")
         exit()
     elif pyydetty_toiminto == 1:
         aloita_peli()
@@ -24,4 +25,4 @@ while True:
     elif pyydetty_toiminto == 4:
         tietolista[3] = muu_tieto()
     else:
-        input("Tuolla numerolla ei löytynyt toimintoa. (Paina enteriä jatkaaksesi)")
+        input("Numerolla ei löytynyt toimintoa. (Paina enteriä jatkaaksesi)")
