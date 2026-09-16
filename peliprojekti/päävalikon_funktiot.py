@@ -1,3 +1,7 @@
+from pelin_funktiot import aloita_peli
+
+
+
 def pelaajan_tiedot():
 
     print("\nTervetuloa pelaamaan peliä!")
@@ -13,7 +17,7 @@ def pelaajan_tiedot():
 
 
     if pelaajan_ikä < 12:
-        print("\nPelin ikäraja on K12, olet liian nuori pelaamaan peliä!")
+        print("\nPelin ikäraja on K12, olet liian nuori pelaamaan peliä!\n")
         exit()
     else:
         print(f"\nHei {pelaajan_nimi}, tervetuloa pelaamaan peliä!")
@@ -23,26 +27,45 @@ def pelaajan_tiedot():
 
 def päävalikko():
 
-    print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n0) Lopeta ohjelma")
+    pelaajan_nimi, pelaajan_ikä = pelaajan_tiedot()
+    tietolista = [pelaajan_nimi, pelaajan_ikä, "", ""]
 
-    pyydetty_ohjelma = input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: ")
-    return pyydetty_ohjelma
+    while True:
 
-def aloita_peli():
-    input("\nPeli on vielä kesken :) (Paina enteriä jatkaaksesi)")
+        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n0) Lopeta ohjelma")
+
+        try:
+            pyydetty_toiminto = int(input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: "))
+        except ValueError:
+            input("Annoit virheellisen numeron, yritä uudelleen. (Paina enteriä jatkaaksesi)")
+            continue
+
+        if pyydetty_toiminto == 0:
+            print("\nPeli sulkeutuu.\n")
+            exit()
+        elif pyydetty_toiminto == 1:
+            aloita_peli()
+        elif pyydetty_toiminto == 2:
+            tulosta_tiedot(tietolista)
+        elif pyydetty_toiminto == 3:
+            tietolista[2] = lempi_peli()
+        elif pyydetty_toiminto == 4:
+            tietolista[3] = muu_tieto()
+        else:
+            input("Numerolla ei löytynyt toimintoa. (Paina enteriä jatkaaksesi)")
   
 
 def tulosta_tiedot(tietolista):
 
-    print("\nPelaajan tiedot")
+    print("\n-- Pelaajan tiedot-- ")
 
-    print("Nimi:", tietolista[0])
-    print("Ikä:", tietolista[1])
+    print("   Nimi:", tietolista[0])
+    print("   Ikä:", tietolista[1])
 
     if tietolista[2] != "":
-        print("Lempipelisi:", tietolista[2])
+        print("   Lempipelisi:", tietolista[2])
     if tietolista[3] != "":
-        print("Muuta tietoa sinusta:", tietolista[3])
+        print("   Muuta tietoa sinusta:", tietolista[3])
 
     input("\nPaina enteriä jatkaaksesi")
 
