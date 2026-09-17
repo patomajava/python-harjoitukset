@@ -32,10 +32,16 @@ def päävalikko():
 
     while True:
 
-        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n0) Lopeta ohjelma")
+        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n0/Lopeta) Lopeta ohjelma")
+
+        pyydetty_toiminto = input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: ")
+
+        if pyydetty_toiminto.lower() == str("lopeta"):
+            print("\nPeli sulkeutuu.\n")
+            exit()
 
         try:
-            pyydetty_toiminto = int(input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: "))
+            pyydetty_toiminto = int(pyydetty_toiminto)
         except ValueError:
             input("Annoit virheellisen numeron, yritä uudelleen. (Paina enteriä jatkaaksesi)")
             continue

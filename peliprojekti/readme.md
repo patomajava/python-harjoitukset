@@ -1,3 +1,3 @@
-# Ohjelmisto 1 - Peliprojekti - "Pelin nimi"
+# Ohjelmisto 1 - Peliprojekti - "Nälkäpeli - Oikea nälkä?"
 
 **Lauri Paasonen**
