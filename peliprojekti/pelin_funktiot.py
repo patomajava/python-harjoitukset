@@ -1,15 +1,14 @@
 def aloita_peli():
-    #input("\nPeli on vielä kesken :)\n\nPaina enteriä jatkaaksesi")
     print("\n\nTervetuloa pelaamaan peliä!\n\n")
 
-    print("Olet juuri herännyt, kello on 8.15 ja sinulla on kova nälkä. Lähdet etsimään ruokaa keittiösi kaapeista... mutta mitään ei löydy. Kaapit ovat tyhjentyneet yön aikana täysin, ja sinun nälkäsi vain kasvaa.\n")
+    print("Olet juuri herännyt, kello on 8:00 ja olet nälkäinen. Lähdet etsimään ruokaa keittiöstä. Avaat jääkaapin, mutta se on tyhjä. Avaat pakastimen, mutta sekin on tyhjä. Käyt koko keittiön läpi mutta kaapeista ei löydy mitään.\n")
 
     print("Sinun täytyy nyt lähteä etsimään ruokaa, mutta mistä?\n")
 
     ensimmäinen_suunta = 0
 
     try:
-        ensimmäinen_suunta = int(input("1. Lähdet ruokakauppaan, johon on pitkä matka, mutta siellä hinnat ovat halpoja...\n2. Lähdet lähimpään Kebab-ravintolaan, se ei ole yhtä kaukana kuin ruokakauppa, mutta siellä hinnat ovat kalliimpia...\n3. Mietit, pitäisikö sinun murtautua naapuriin, sillä hänellä taatusti olisi ruokaa. Tiedät naapurin olevan erittäin tarkka, ja tiedät ettei hän poistu kotoaan usein. Mutta sinulla on nälkä, ja naapuri on lähin vaihtoehtosi...\n\nMinkä vaihtoehdon valitset: "))
+        ensimmäinen_suunta = int(input("1. Lähdet ruokakauppaan, johon on pitkä matka, mutta siellä hinnat ovat halpoja.\n2. Lähdet lähimpään Kebab-ravintolaan, se ei ole yhtä kaukana kuin ruokakauppa, mutta siellä hinnat ovat kalliimpia.\n3. Mietit, pitäisikö sinun tutkia vielä, löytyykö talostasi mitään, mikä voisi olla matkallesi hyödyllistä...\n\nMinkä vaihtoehdon valitset: "))
     except ValueError:
         print("Virheellinen valinta, palataan päävalikkoon.")
 
@@ -18,7 +17,7 @@ def aloita_peli():
     elif ensimmäinen_suunta == 2:
         print("Kebab-ravintola")
     elif ensimmäinen_suunta == 3:
-        print("Naapuri")
+        print("Oma koti")
     elif ensimmäinen_suunta != 1 or 2 or 3:
         print("Tuolla numerolla ei löytynyt vaihtoehtoa.")
 
