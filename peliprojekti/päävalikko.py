@@ -45,7 +45,7 @@ def päävalikko():
         #     print("\nPeli sulkeutuu.\n")
         #     exit()
         if pyydetty_toiminto == 1:
-            return
+            return pelaajan_nimi
         elif pyydetty_toiminto == 2:
             tulosta_tiedot(tietolista)
         elif pyydetty_toiminto == 3:

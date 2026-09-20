@@ -1,3 +1,5 @@
 from päävalikko import päävalikko
+from peli import aloita_peli
 
-päävalikko()
+pelaaja = päävalikko()
+aloita_peli(pelaaja)
