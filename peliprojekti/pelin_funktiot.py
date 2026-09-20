@@ -1,8 +1,10 @@
-def aloita_peli():
+from pelin_luokat import Pelaaja, Huone, Esine
+
+# Funktio, joka ajetaan kun peli alkaa. Kertoo alun tarinan ja kysyy pelaajalta ensimmäisen suunnan.
+def ensimmäinen_valikko():
+
     print("\n\nTervetuloa pelaamaan peliä!\n\n")
-
     print("Olet juuri herännyt, kello on 8:00 ja olet nälkäinen. Lähdet etsimään ruokaa keittiöstä. Avaat jääkaapin, mutta se on tyhjä. Avaat pakastimen, mutta sekin on tyhjä. Käyt koko keittiön läpi mutta kaapeista ei löydy mitään.\n")
-
     print("Sinun täytyy nyt lähteä etsimään ruokaa, mutta mistä?\n")
 
     ensimmäinen_suunta = 0
@@ -13,29 +15,32 @@ def aloita_peli():
         print("Virheellinen valinta, palataan päävalikkoon.")
 
     if ensimmäinen_suunta == 1:
-        print("Ruokakauppa")
+        seuraava_paikka("Ruokakauppa")
     elif ensimmäinen_suunta == 2:
-        print("Kebab-ravintola")
+        seuraava_paikka("Kebab-ravintola")
     elif ensimmäinen_suunta == 3:
-        print("Oma koti")
+        seuraava_paikka("Oma koti")
     elif ensimmäinen_suunta != 1 or 2 or 3:
         print("Tuolla numerolla ei löytynyt vaihtoehtoa.")
 
+# Funktio, jota voidaan kutsua aina kun pelaaja siirtyy edellisestä huoneesta seuraavaan.
+def seuraava_paikka(pelaaja, nykyinen_huone, uusi_huone):
+    huone = Huone(uusi_huone)
+    print(f"{pelaaja} siirtyy paikasta {nykyinen_huone} paikkaan {uusi_huone}")
+    return huone
 
-#aloita_peli()
+# Funktio, jota voidaan kutsua aina kun pelaaja tahtoo ottaa esineen itselleen.
+def keraa_esine(pelaaja, esine):
+    pelaaja.esineet.append()
+    print(pelaaja.esineet)
+    print(f"Olet kerännyt esineen {esine}.")
+    return
+
+def liiku(huoneen_nimi):
+    print((f"Olet siirtymässä paikkaan {huoneen_nimi}."))
+    seuraava_paikka(huoneen_nimi)
+    return
 
 
-# Tulostettavaa tekstiä hidastava funktio, jos haluaa pelin tuntuvan hitaammalta.
-# 
-# import sys
-# import time
-# 
-# def type_text(text, delay=0.08):
-#   for char in text:
-#     sys.stdout.write(char)
-#     sys.stdout.flush()
-#     time.sleep(delay)
-#   print()
-
-
-# type_text("Tervetuloa pelaamaan peliä...")
+def pelivalikko():
+    return

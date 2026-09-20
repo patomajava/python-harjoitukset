@@ -1,11 +1,7 @@
-from pelin_funktiot import aloita_peli
-
-
-
+# Kysytään pelaajan nimi ja ikä, ja selvitetään onko pelaaja tarpeeksi vanha peliä varten.
 def pelaajan_tiedot():
 
     print("\nTervetuloa pelaamaan peliä!")
-
     pelaajan_nimi = input("\nPelaajan nimi: ")
 
     while True:
@@ -14,7 +10,6 @@ def pelaajan_tiedot():
             break
         except ValueError:
             print("Annettu ikä on virheellinen luku.")
-
 
     if pelaajan_ikä < 12:
         print("\nPelin ikäraja on K12, olet liian nuori pelaamaan peliä!\n")
@@ -25,6 +20,7 @@ def pelaajan_tiedot():
     return pelaajan_nimi, pelaajan_ikä
 
 
+# Tulostetaan näkyviin toistuva päävalikko. Päävalikossa voi aloittaa pelin, tulostaa pelaajan tiedot, antaa lisätietoja pelaajasta, ja lopettaa ohjelman.
 def päävalikko():
 
     pelaajan_nimi, pelaajan_ikä = pelaajan_tiedot()
@@ -32,8 +28,7 @@ def päävalikko():
 
     while True:
 
-        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n0/Lopeta) Lopeta ohjelma")
-
+        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n\n'lopeta' -> Lopeta ohjelma")
         pyydetty_toiminto = input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: ")
 
         if pyydetty_toiminto.lower() == str("lopeta"):
@@ -46,11 +41,11 @@ def päävalikko():
             input("Annoit virheellisen numeron, yritä uudelleen. (Paina enteriä jatkaaksesi)")
             continue
 
-        if pyydetty_toiminto == 0:
-            print("\nPeli sulkeutuu.\n")
-            exit()
-        elif pyydetty_toiminto == 1:
-            aloita_peli()
+        # if pyydetty_toiminto == 0:
+        #     print("\nPeli sulkeutuu.\n")
+        #     exit()
+        if pyydetty_toiminto == 1:
+            return
         elif pyydetty_toiminto == 2:
             tulosta_tiedot(tietolista)
         elif pyydetty_toiminto == 3:
@@ -64,7 +59,6 @@ def päävalikko():
 def tulosta_tiedot(tietolista):
 
     print("\n-- Pelaajan tiedot-- ")
-
     print("   Nimi:", tietolista[0])
     print("   Ikä:", tietolista[1])
 

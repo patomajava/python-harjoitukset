@@ -1,3 +1,3 @@
-from päävalikon_funktiot import päävalikko
+from päävalikko import päävalikko
 
 päävalikko()
