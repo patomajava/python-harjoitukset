@@ -35,7 +35,7 @@ autot = []
 for i in range(1, 11):
     auto = Auto(f"ABC-{i}", random.randint(100, 200))
     autot.append(auto)
- 
+
 while True: 
     for i in autot:
         auto = i.kiihdytä(random.randint(-10, 15))

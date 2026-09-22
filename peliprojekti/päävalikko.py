@@ -28,7 +28,7 @@ def päävalikko():
 
     while True:
 
-        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n1) Aloita peli\n2) Näytä tietoni\n3) Kerro lempipelisi\n4) Kerro muuta tietoa itsestäsi\n\n'lopeta' -> Lopeta ohjelma")
+        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n(1) -> Aloita Peli\n(2) -> Näytä Tietoni\n(3) -> Kerro Lempipelisi\n(4) -> Kerro muuta tietoa itsestäsi\n(lopeta) -> Lopeta Ohjelma")
         pyydetty_toiminto = input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: ")
 
         if pyydetty_toiminto.lower() == str("lopeta"):

@@ -44,11 +44,9 @@ def pelivalikko(pelaaja):
                 print("Virheellinen valinta! Yritä uudelleen.")
 
         if valinta == 1:
-            print(f"Siirrytään huoneeseen ??")
+            print(f"Siirrytään huoneeseen...")
             arvo += 1
         elif valinta == 2:
             print(f"Etsitään huone...")
         elif valinta == 3:
-            print(f"Otetaan esine inventaarioon.")
-
-aloita_peli("Lauri")
+            print(f"Otetaan esine inventaarioon...")
