@@ -21,9 +21,8 @@ def pelaajan_tiedot():
 
 
 # Tulostetaan näkyviin toistuva päävalikko. Päävalikossa voi aloittaa pelin, tulostaa pelaajan tiedot, antaa lisätietoja pelaajasta, ja lopettaa ohjelman.
-def päävalikko():
+def päävalikko(pelaajan_nimi, pelaajan_ikä):
 
-    pelaajan_nimi, pelaajan_ikä = pelaajan_tiedot()
     tietolista = [pelaajan_nimi, pelaajan_ikä, "", ""]
 
     while True:

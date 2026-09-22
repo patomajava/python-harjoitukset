@@ -1,5 +1,8 @@
-from päävalikko import päävalikko
+from päävalikko import pelaajan_tiedot, päävalikko
 from peli import aloita_peli
 
-pelaaja = päävalikko()
-aloita_peli(pelaaja)
+pelaajan_nimi, pelaajan_ikä = pelaajan_tiedot()
+
+while True:
+    pelaaja = päävalikko(pelaajan_nimi, pelaajan_ikä)
+    aloita_peli(pelaaja)
