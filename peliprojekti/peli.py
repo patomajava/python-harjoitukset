@@ -1,6 +1,7 @@
 from pelin_luokat import Pelaaja, Tila, Esine, Tuote
 from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, ota_esine, myy_esine_tai_palauta_pullo, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä_tai_auta
 from tarinatekstit import pelin_intro
+import time
 
   
 # FUNKTIO, Joka luo pelimaailman kaikki oliot, ja lisää olioihin tarvittavat tiedot. Funktio palauttaa arvon "koti", koska pelaajaolio tarvitsee aloitustilan "aloita_peli" Funktiossa.
@@ -54,24 +55,23 @@ def luodaan_pelin_maailma():
     koti.lisää_yhteys = "Matka ruokakauppaan", matka_ruokakauppaan
     koti.lisää_yhteys = "Matka ravintolaan", matka_ravintolaan
 
-    matka_ruokakauppaan.lisää_yhteys = "Koti", koti
-    matka_ruokakauppaan.lisää_yhteys = "Ruokakauppa", ruokakauppa
-    matka_ruokakauppaan.lisää_yhteys = "Matka ravintolaan", matka_ravintolaan
+    matka_ruokakauppaan.lisää_yhteys("Koti", koti)
+    matka_ruokakauppaan.lisää_yhteys("Ruokakauppa", ruokakauppa)
+    matka_ruokakauppaan.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
 
-    matka_ravintolaan.lisää_yhteys = "Koti", koti
-    matka_ravintolaan.lisää_yhteys = "Ravintola", ravintola
-    matka_ravintolaan.lisää_yhteys = "Matka ruokakauppaan", ravintola
+    matka_ravintolaan.lisää_yhteys("Koti", koti)
+    matka_ravintolaan.lisää_yhteys("Ravintola", ravintola)
+    matka_ravintolaan.lisää_yhteys("Matka ruokakauppaan", ravintola)
 
-    ruokakauppa.lisää_yhteys = "Matka ravintolaan", matka_ravintolaan
-    ruokakauppa.lisää_yhteys = "Matka kotiin", matka_kotiin
+    ruokakauppa.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
+    ruokakauppa.lisää_yhteys("Matka kotiin", matka_kotiin)
 
-    ravintola.lisää_yhteys = "Matka ruokakauppaan", matka_ruokakauppaan
-    ravintola.lisää_yhteys = "Matka kotiin", matka_kotiin
+    ravintola.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
+    ravintola.lisää_yhteys("Matka kotiin", matka_kotiin)
 
-    matka_kotiin.lisää_yhteys = "Matka ruokakauppaan", matka_ruokakauppaan
-    matka_kotiin.lisää_yhteys = "Matka ravintolaan", matka_ravintolaan
-    matka_kotiin.lisää_yhteys = "Koti", koti
-
+    matka_kotiin.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
+    matka_kotiin.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
+    matka_kotiin.lisää_yhteys("Koti", koti)
 
     return koti
 
@@ -80,9 +80,11 @@ def luodaan_pelin_maailma():
 def tilan_valikko(pelaaja):
     
     while True:
-        print(f"\n{pelaaja.sijainti.nimi} tilan valikko---\n")
-        print("\nMitä haluat tehdä seuraavaksi?\n")
-        print("[1] Palaa takaisin pelivalikkoon")
+        print("\033[H\033[J", end="")
+
+        print(f"- {pelaaja.sijainti.nimi.upper()}-TILAN VALIKKO -\n")
+        print("Mitä haluat tehdä seuraavaksi?\n")
+        print("[1] Palaa takaisin pelin valikkoon")
 
         if pelaaja.sijainti.nimi == "Matka Ruokakauppaan" or pelaaja.sijainti.nimi == "Matka Ravintolaan":
             print("[2] Tutki ympäristöä")
@@ -100,9 +102,9 @@ def tilan_valikko(pelaaja):
             print("[5] Myy tavaraa")
 
         try:
-            valinta = int(input("Valinta: "))
+            valinta = int(input("\nValinta: "))
         except ValueError:
-            print("Virheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
+            print("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
             continue
 
         if valinta == 1:
@@ -115,7 +117,8 @@ def tilan_valikko(pelaaja):
                 valinta = input("Haluatko ottaa esineen reppuusi? [kyllä/ei]")
 
                 if valinta.lower() == "kyllä":
-                    ota_esine(pelaaja)
+                    for esine in tilan_asiat:
+                        ota_esine(pelaaja, esine)
                 elif valinta.lower() == "ei":
                     print("Selvä, ei oteta esineitä mukaan")
 
@@ -140,6 +143,7 @@ def tilan_valikko(pelaaja):
 def pelivalikko(pelaaja):
 
     while True:
+        print("\033[H\033[J", end="")
 
         if pelaaja.nälkä >= 100:
             print("Kuolit nälkään LMAO.")
@@ -158,23 +162,23 @@ def pelivalikko(pelaaja):
 
         tulosta_tilanne(pelaaja)
 
-        print("\n---PELIVALIKKO---\n")
-        print("\nMitä haluat tehdä seuraavaksi?")
-        print("[1] Näytä tämän tilan valikko")
-        print("[2] Siirry toiseen tilaan")
-        print("[3] Katso reppusi sisältö")
+        print("\n-- PELIN VALIKKO --\n")
+        print("Mitä haluat tehdä seuraavaksi?\n")
+        print(f"[1] Näytä '{pelaaja.sijainti.nimi}' Valikko")
+        print("[2] Liiku toiseen paikkaan")
+        print("[3] Näytä repun sisältö")
         print("[4] Syö ruokaa")
-        print("[palaa] Palaa päävalikkoon")
+        print("\n[palaa] Palaa päävalikkoon")
 
         try: 
-            valinta = input("Valinta: ")
+            valinta = input("\nValinta: ")
             if valinta.lower() == "palaa":
                 return
             
             valintaluku = int(valinta) 
 
         except ValueError:
-            input("Virheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
+            input("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
             continue
 
         if valintaluku == 1:
@@ -197,8 +201,10 @@ def aloita_peli(pelaajan_nimi):
 
     pelaaja = Pelaaja(pelaajan_nimi, aloitustila)
 
+    print("\033[H\033[J", end="")
+
     pelin_intro()
-    input("[Enter] Aloita Peli!")
+    input("[Enter] Aloita Peli")
 
     pelivalikko(pelaaja)
     return

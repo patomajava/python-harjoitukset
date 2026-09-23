@@ -1,5 +1,5 @@
 def pelin_intro():
-    print("Introteksti")
+    print("Introteksti\n")
 
 def tutkimisteksti():
     return

@@ -35,9 +35,9 @@ class Pelaaja:
 
         self.nälkä += aika // 30
 
-    def aika(self):
+    def kello(self):
 
-        print(f"Kello on {self.aika // 60}:{self.aika % 60}.")
+        print(f"Kello on {self.aika // 60:02d}:{self.aika % 60:02d}")
 
 
 # Tila on pelimaailmasta löytyvä paikka tai alue, jossa pelaaja voi olla, ja tehdä asioita
