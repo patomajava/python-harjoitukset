@@ -86,7 +86,7 @@ def tilan_valikko(pelaaja):
         print("Mitä haluat tehdä seuraavaksi?\n")
         print("[1] Palaa takaisin pelin valikkoon")
 
-        if pelaaja.sijainti.nimi == "Matka Ruokakauppaan" or pelaaja.sijainti.nimi == "Matka Ravintolaan":
+        if pelaaja.sijainti.nimi == "Matka ruokakauppaan" or pelaaja.sijainti.nimi == "Matka ravintolaan":
             print("[2] Tutki ympäristöä")
 
         if pelaaja.sijainti.nimi == "Ruokakauppa":
@@ -103,6 +103,7 @@ def tilan_valikko(pelaaja):
 
         try:
             valinta = int(input("\nValinta: "))
+
         except ValueError:
             print("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
             continue
@@ -110,7 +111,7 @@ def tilan_valikko(pelaaja):
         if valinta == 1:
             return
         
-        elif valinta == 2 and (pelaaja.sijainti.nimi == "Matka Ruokakauppaan" or valinta == 2 and pelaaja.sijainti.nimi == "Matka Ravintolaan"):
+        elif valinta == 2 and (pelaaja.sijainti.nimi == "Matka ruokakauppaan" or valinta == 2 and pelaaja.sijainti.nimi == "Matka ravintolaan"):
             tilan_asiat = tutki_tilaa(pelaaja)
 
             if tilan_asiat != "":
@@ -131,7 +132,7 @@ def tilan_valikko(pelaaja):
         elif valinta == 3 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 3 and pelaaja.sijainti.nimi == "Ravintola":
             osta_tuote(pelaaja)
 
-        elif valinta == 4 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 3 and pelaaja.sijanti.nimi == "Ravintola":
+        elif valinta == 4 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 4 and pelaaja.sijanti.nimi == "Ravintola":
             tee_töitä_tai_auta(pelaaja)
 
         elif valinta == 5 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 5 and pelaaja.sijainti.nimi == "Ravintola":

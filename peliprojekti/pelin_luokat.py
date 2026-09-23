@@ -32,7 +32,6 @@ class Pelaaja:
     def ajankulu(self, aika):
 
         self.aika += aika
-
         self.nälkä += aika // 30
 
     def kello(self):
