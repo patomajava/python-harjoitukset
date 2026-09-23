@@ -52,8 +52,8 @@ def luodaan_pelin_maailma():
 
 # LISÄTÄÄN TILOILLE YHTEYDET TOISIIN TILOIHIN
 
-    koti.lisää_yhteys = "Matka ruokakauppaan", matka_ruokakauppaan
-    koti.lisää_yhteys = "Matka ravintolaan", matka_ravintolaan
+    koti.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
+    koti.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
 
     matka_ruokakauppaan.lisää_yhteys("Koti", koti)
     matka_ruokakauppaan.lisää_yhteys("Ruokakauppa", ruokakauppa)

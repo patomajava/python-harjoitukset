@@ -28,11 +28,11 @@ def tutki_tilaa(pelaaja):
 
     tila = pelaaja.sijainti
 
-    print(f"Tutkitaan paikkaa {tila}...")
+    print(f"Tutkitaan paikkaa {tila.nimi}...")
     print("Löysit:")
 
     for esine in tila.esineet:
-        print(esine)
+        print(esine.nimi)
 
     input("Paina [Enter] jatkaaksesi.")
 
