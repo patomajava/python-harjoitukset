@@ -1,4 +1,4 @@
-# Kysytään pelaajan nimi ja ikä, ja selvitetään onko pelaaja tarpeeksi vanha peliä varten.
+# FUNKTIO, Joka ajetaan kerran ohjelman alussa. Se kysyy pelaajan nimen ja iän sekä määrittää onko pelaaja liian nuori peliä varten.
 def pelaajan_tiedot():
 
     print("\nTervetuloa pelaamaan peliä!")
@@ -20,14 +20,14 @@ def pelaajan_tiedot():
     return pelaajan_nimi, pelaajan_ikä
 
 
-# Tulostetaan näkyviin toistuva päävalikko. Päävalikossa voi aloittaa pelin, tulostaa pelaajan tiedot, antaa lisätietoja pelaajasta, ja lopettaa ohjelman.
+# FUNKTIO, Joka toistaa päävalikkoa jatkuvasti kunnes ohjelma lopetetaan tai peli aloitetaan. Päävalikossa voi pyytää ohjelmaa näyttämään pelaajaan tiedot. Siinä voi myös lisätä tietoja ohjelmalle, tosin ohjelma ei käytä tietoa mihinkään.
 def päävalikko(pelaajan_nimi, pelaajan_ikä):
 
     tietolista = [pelaajan_nimi, pelaajan_ikä, "", ""]
 
     while True:
 
-        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n(1) -> Aloita Peli\n(2) -> Näytä Tietoni\n(3) -> Kerro Lempipelisi\n(4) -> Kerro muuta tietoa itsestäsi\n(lopeta) -> Lopeta Ohjelma")
+        print("\nPäävalikko\n\nPäävalikossa voit valita erilaisia toimintoja:\n[1] Aloita Peli\n[2] Näytä Tietoni\n[3] Kerro Lempipelisi\n[4] Kerro muuta tietoa itsestäsi\n\n[lopeta] -> Lopeta Ohjelma")
         pyydetty_toiminto = input("\nKirjoita toiminnon numero ja paina enteriä!\nKutsu toiminto: ")
 
         if pyydetty_toiminto.lower() == str("lopeta"):
@@ -36,25 +36,28 @@ def päävalikko(pelaajan_nimi, pelaajan_ikä):
 
         try:
             pyydetty_toiminto = int(pyydetty_toiminto)
+
         except ValueError:
             input("Annoit virheellisen numeron, yritä uudelleen. (Paina enteriä jatkaaksesi)")
             continue
 
-        # if pyydetty_toiminto == 0:
-        #     print("\nPeli sulkeutuu.\n")
-        #     exit()
         if pyydetty_toiminto == 1:
-            return pelaajan_nimi
+            return "Aloita Peli"
+        
         elif pyydetty_toiminto == 2:
             tulosta_tiedot(tietolista)
+
         elif pyydetty_toiminto == 3:
             tietolista[2] = lempi_peli()
+
         elif pyydetty_toiminto == 4:
             tietolista[3] = muu_tieto()
+
         else:
-            input("Numerolla ei löytynyt toimintoa. (Paina enteriä jatkaaksesi)")
+            input("Numerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
   
 
+# FUNKTIO, Joka tulostaa pelaajan tiedot järjestyksessä, ja sen perusteella mitä tietoa pelaaja on antanut viimeiseksi.
 def tulosta_tiedot(tietolista):
 
     print("\n-- Pelaajan tiedot-- ")
@@ -62,11 +65,12 @@ def tulosta_tiedot(tietolista):
     print("   Ikä:", tietolista[1])
 
     if tietolista[2] != "":
-        print("   Lempipelisi:", tietolista[2])
+        print("   Lempipelisi:", tietolista[2])   
+
     if tietolista[3] != "":
         print("   Muuta tietoa sinusta:", tietolista[3])
 
-    input("\nPaina enteriä jatkaaksesi")
+    input("\nPaina [Enter] jatkaaksesi.")
 
 
 def lempi_peli():

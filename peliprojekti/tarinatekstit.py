@@ -1,14 +1,46 @@
-def tarinateksti_01():
-    print("Tarinateksti 1")
+def pelin_intro():
+    print("Introteksti")
 
-def tarinateksti_02():
-    print("Tarinateksti 2")
+def tutkimisteksti():
+    return
 
-def tarinateksti_03():
-    print("Tarinateksti 3")
 
-def tarinateksti_04():
-    print("Tarinateksti 4")
 
-def tarinateksti_05():
-    print("Tarinateksti 5")
+def matka_ruokakauppaan_teksti():
+    return
+
+def matka_ravintolaan_teksti():
+    return
+
+
+
+def koti_teksti_01():
+    return
+
+def koti_teksti_02():
+    return
+
+
+
+def kaupan_teksti_01():
+    return
+
+def kaupan_teksti_02():
+    return
+
+
+
+def ravintolan_teksti_01():
+    return
+
+def ravintolan_teksti_02():
+    return
+
+
+
+
+def salaisen_tunnelin_teksti_01():
+    return
+
+def salaisen_tunnelin_teksti_02():
+    return

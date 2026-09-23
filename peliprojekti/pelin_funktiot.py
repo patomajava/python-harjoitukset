@@ -1,13 +1,32 @@
-from tarinatekstit import tarinateksti_01, tarinateksti_02, tarinateksti_03, tarinateksti_04, tarinateksti_05
+def tulosta_tilanne(pelaaja):
+    return
 
-def mikä_tarinateksti(arvo):
-    if arvo == 1:
-        tarinateksti_01()
-    elif arvo == 2:
-        tarinateksti_02()
-    elif arvo == 3:
-        tarinateksti_03()
-    elif arvo == 4:
-        tarinateksti_04()
-    elif arvo == 5:
-        tarinateksti_05()
+def näytä_esineet_ja_tuotteet(pelaaja):
+    return
+
+def tutki_tilaa(pelaaja):
+    return
+
+def vaihda_tilaa(pelaaja):
+    return
+
+def ota_esine(pelaaja):
+    return
+
+def myy_esine_tai_palauta_pullo(pelaaja):
+    return
+
+def osta_tuote(pelaaja):
+    return
+
+def syö_tuote(pelaaja):
+    return
+
+def tee_töitä_tai_auta(pelaaja):
+    return
+
+def ravintolan_menu(pelaaja):
+    return
+
+def kaupan_hinnasto(pelaaja):
+    return
