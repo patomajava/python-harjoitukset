@@ -1,5 +1,5 @@
 from pelin_luokat import Pelaaja, Tila, Esine, Tuote
-from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, ota_esine, myy_esine_tai_palauta_pullo, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä_tai_auta
+from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, ota_esine, myy_esine_tai_palauta_pullo, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
 from tarinatekstit import pelin_intro
 import time
 
@@ -92,8 +92,7 @@ def tilan_valikko(pelaaja):
         if pelaaja.sijainti.nimi == "Ruokakauppa":
             print("[2] Näytä kaupan hinnasto")
             print("[3] Osta jokin tuote")
-            print("[4] Auta henkilökuntaa")
-            print("[5] Palauta pulloja")
+            print("[4] Palauta pulloja")
 
         if pelaaja.sijainti.nimi == "Ravintola":
             print("[2] Näytä ravintolan menu")
@@ -132,10 +131,10 @@ def tilan_valikko(pelaaja):
         elif valinta == 3 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 3 and pelaaja.sijainti.nimi == "Ravintola":
             osta_tuote(pelaaja)
 
-        elif valinta == 4 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 4 and pelaaja.sijanti.nimi == "Ravintola":
-            tee_töitä_tai_auta(pelaaja)
+        elif valinta == 4 and pelaaja.sijainti.nimi == "Ravintola":
+            tee_töitä(pelaaja)
 
-        elif valinta == 5 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 5 and pelaaja.sijainti.nimi == "Ravintola":
+        elif valinta == 4 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 5 and pelaaja.sijainti.nimi == "Ravintola":
             myy_esine_tai_palauta_pullo(pelaaja)
             
 
