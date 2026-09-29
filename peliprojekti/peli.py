@@ -1,47 +1,43 @@
 from pelin_luokat import Pelaaja, Tila, Esine, Tuote
-from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, ota_esine, myy_esine_tai_palauta_pullo, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
+from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, myy_esine, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
 from tarinatekstit import pelin_intro
-import time
 
-  
-# FUNKTIO, Joka luo pelimaailman kaikki oliot, ja lisää olioihin tarvittavat tiedot. Funktio palauttaa arvon "koti", koska pelaajaolio tarvitsee aloitustilan "aloita_peli" Funktiossa.
+
 def luodaan_pelin_maailma():
 
-# LUODAAN PELIIN TILAT JA ALUEET.
+# LUODAAN PELIN TILAT JA ALUEET.
     koti = Tila("Koti")
-    matka_ruokakauppaan = Tila("Matka ruokakauppaan")
+    pihatie = Tila("Pihatie")
+    puisto = Tila("Puisto")
+    merenranta = Tila("Merenranta")
+    metsä = Tila("Metsä")
     ruokakauppa = Tila("Ruokakauppa")
-    matka_ravintolaan = Tila("Matka ravintolaan")
     ravintola = Tila("Ravintola")
-    matka_kotiin = Tila("Matka kotiin")
-    salainen_tunneli = Tila("Salainen tunneli")
+    panttilainaamo = Tila("Panttilainaamo")
+    salainen_kellari = Tila("Salainen Kellari")
 
-# LUODAAN PELIIN ESINEET | ESINEET OVAT ASIOITA JOITA PELAAJA VOI MYYDÄ, MUTTA EI SYÖDÄ TAI KÄYTTÄÄ.
-    palautuspullo_koti = Esine("Palautuspullo", 0.20)
-    palautuspullo_matka_ruokakauppaan = Esine("Palautuspullo", 0.20)
-    palautuspullo_matka_ravintolaan = Esine("Palautuspullo", 0.20)
-    lippis = Esine("Lippis", 5)
-    kultaharkko = Esine("Kultaharkko", 1000)
+# LUODAAN PELIN ESINEET | ESINEET OVAT ASIOITA JOITA PELAAJA VOI MYYDÄ
+    avaimenperä = Esine("Avaimenperä", 3)
+    hieno_kivi_1 = Esine("Hieno kivi", 1)
+    hieno_kivi_2 = Esine("Hieno kivi", 1)
+    lippis = Esine("Lippis", 6)
+    kultaharkko = Esine("Kultaharkko", 500)
 
-# LISÄTÄÄN ESINEET OIKEISIIN TILOIHIN
-    koti.lisää_esine(palautuspullo_koti)
+    metsä.lisää_esine(hieno_kivi_1)
+#   metsä.lisää_esine(hieno_kivi_2)
+    pihatie.lisää_esine(avaimenperä)
+    puisto.lisää_esine(lippis)
+    salainen_kellari.lisää_esine(kultaharkko)
 
-    matka_ruokakauppaan.lisää_esine(palautuspullo_matka_ruokakauppaan)
-    matka_ravintolaan.lisää_esine(palautuspullo_matka_ravintolaan)
-
-    matka_kotiin.lisää_esine(lippis)
-    salainen_tunneli.lisää_esine(kultaharkko)
-
-# LUODAAN PELIN TUOTTEET | TUOTTEET OVAT ASIOITA JOITA PELAAJA VOI SYÖDÄ TAI KÄYTTÄÄ, MUTTA EI MYYDÄ.
+# LUODAAN PELIN TUOTTEET | TUOTTEET OVAT ASIOITA JOITA PELAAJA VOI OSTAA
     omena = Tuote("Omena", 0.50, 10)
     leipä = Tuote("Leipä", 1, 20)
     pitsa = Tuote("Pitsa", 4, 50)
 
     kebabrulla = Tuote("Kebabrulla", 8, 60)
-    kebab_ranskalaisilla = Tuote("Kebab ranskalaisilla", 8, 60)
+    kebab_ranskalaisilla = Tuote("Kebab Ranskalaisilla", 8, 60)
     sisäfileepihvi = Tuote("Sisäfileepihvi", 100, 90)
 
-# LISÄTÄÄN TUOTTEET OIKEISIN TILOIHIN
     ruokakauppa.lisää_tuote(omena)
     ruokakauppa.lisää_tuote(leipä)
     ruokakauppa.lisää_tuote(pitsa)
@@ -50,153 +46,172 @@ def luodaan_pelin_maailma():
     ravintola.lisää_tuote(kebab_ranskalaisilla)
     ravintola.lisää_tuote(sisäfileepihvi)
 
-# LISÄTÄÄN TILOILLE YHTEYDET TOISIIN TILOIHIN
 
-    koti.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
-    koti.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
+# LUODAAN TILOILLE YHTEYDET TOISIIN TILOIHIN
+    koti.lisää_yhteys("Pihatie", pihatie)
+    koti.lisää_yhteys("Salainen Kellari", salainen_kellari)
 
-    matka_ruokakauppaan.lisää_yhteys("Koti", koti)
-    matka_ruokakauppaan.lisää_yhteys("Ruokakauppa", ruokakauppa)
-    matka_ruokakauppaan.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
+    salainen_kellari.lisää_yhteys("Koti", koti)
 
-    matka_ravintolaan.lisää_yhteys("Koti", koti)
-    matka_ravintolaan.lisää_yhteys("Ravintola", ravintola)
-    matka_ravintolaan.lisää_yhteys("Matka ruokakauppaan", ravintola)
+    pihatie.lisää_yhteys("Koti", koti)
+    pihatie.lisää_yhteys("Puisto", puisto)
+    pihatie.lisää_yhteys("Metsä", metsä)
 
-    ruokakauppa.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
-    ruokakauppa.lisää_yhteys("Matka kotiin", matka_kotiin)
+    puisto.lisää_yhteys("Pihatie", pihatie)
+    puisto.lisää_yhteys("Metsä", metsä)
+    puisto.lisää_yhteys("Ruokakauppa", ruokakauppa)
+    puisto.lisää_yhteys("Ravintola", ravintola)
+    puisto.lisää_yhteys("Tarvikekauppa", panttilainaamo)
 
-    ravintola.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
-    ravintola.lisää_yhteys("Matka kotiin", matka_kotiin)
+    metsä.lisää_yhteys("Merenranta", merenranta)
+    metsä.lisää_yhteys("Puisto", puisto)
+    metsä.lisää_yhteys("Pihatie", pihatie)
 
-    matka_kotiin.lisää_yhteys("Matka ruokakauppaan", matka_ruokakauppaan)
-    matka_kotiin.lisää_yhteys("Matka ravintolaan", matka_ravintolaan)
-    matka_kotiin.lisää_yhteys("Koti", koti)
+    merenranta.lisää_yhteys("Metsä", metsä)
+
+    ruokakauppa.lisää_yhteys("Puisto", puisto)
+    ruokakauppa.lisää_yhteys("Ravintola", ravintola)
+    ruokakauppa.lisää_yhteys("Tarvikekauppa", panttilainaamo)
+
+    ravintola.lisää_yhteys("Puisto", puisto)
+    ravintola.lisää_yhteys("Ruokakauppa", ruokakauppa)
+    ravintola.lisää_yhteys("Tarvikekauppa", panttilainaamo)
+
+    panttilainaamo.lisää_yhteys("Puisto", puisto)
+    panttilainaamo.lisää_yhteys("Ravintola", ravintola)
+    panttilainaamo.lisää_yhteys("Ruokakauppa", ruokakauppa)
 
     return koti
 
 
-# FUNKTIO, Joka tulostuu kun pelaaja avaa pelivalikosta tilakohtaisen valikon. Toinen valikko tehty ettei pelivalikossa ole liian montaa vaihtoehtoa päällekäin, tehden siitä sekavaisemman, kuin olisi tarve.
-def tilan_valikko(pelaaja):
-    
-    while True:
-        print("\033[H\033[J", end="")
-
-        print(f"- {pelaaja.sijainti.nimi.upper()}-TILAN VALIKKO -\n")
-        print("Mitä haluat tehdä seuraavaksi?\n")
-        print("[1] Palaa takaisin pelin valikkoon")
-
-        if pelaaja.sijainti.nimi == "Matka ruokakauppaan" or pelaaja.sijainti.nimi == "Matka ravintolaan":
-            print("[2] Tutki ympäristöä")
-
-        if pelaaja.sijainti.nimi == "Ruokakauppa":
-            print("[2] Näytä kaupan hinnasto")
-            print("[3] Osta jokin tuote")
-            print("[4] Palauta pulloja")
-
-        if pelaaja.sijainti.nimi == "Ravintola":
-            print("[2] Näytä ravintolan menu")
-            print("[3] Tilaa ruokaa")
-            print("[4] Auta henkilökuntaa")
-            print("[5] Myy tavaraa")
-
-        try:
-            valinta = int(input("\nValinta: "))
-
-        except ValueError:
-            print("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
-            continue
-
-        if valinta == 1:
-            return
-        
-        elif valinta == 2 and (pelaaja.sijainti.nimi == "Matka ruokakauppaan" or valinta == 2 and pelaaja.sijainti.nimi == "Matka ravintolaan"):
-            tilan_asiat = tutki_tilaa(pelaaja)
-
-            if tilan_asiat != "":
-                valinta = input("Haluatko ottaa esineen reppuusi? [kyllä/ei]")
-
-                if valinta.lower() == "kyllä":
-                    for esine in tilan_asiat:
-                        ota_esine(pelaaja, esine)
-                elif valinta.lower() == "ei":
-                    print("Selvä, ei oteta esineitä mukaan")
-
-        elif valinta == 2 and pelaaja.sijainti.nimi == "Ruokakauppa":
-            kaupan_hinnasto(pelaaja)
-
-        elif valinta == 2 and pelaaja.sijainti.nimi == "Ravintola":
-            ravintolan_menu(pelaaja)
-
-        elif valinta == 3 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 3 and pelaaja.sijainti.nimi == "Ravintola":
-            osta_tuote(pelaaja)
-
-        elif valinta == 4 and pelaaja.sijainti.nimi == "Ravintola":
-            tee_töitä(pelaaja)
-
-        elif valinta == 4 and pelaaja.sijainti.nimi == "Ruokakauppa" or valinta == 5 and pelaaja.sijainti.nimi == "Ravintola":
-            myy_esine_tai_palauta_pullo(pelaaja)
-            
-
-
-# FUNKTIO, Joka toistaa pelivalikkoa kunnes käyttäjä haluaa palata päävalikkoon. Päävalikko on niinsanottu HUB kaikille pelissä oleville toiminnoille.
 def pelivalikko(pelaaja):
 
     while True:
         print("\033[H\033[J", end="")
 
         if pelaaja.nälkä >= 100:
-            print("Kuolit nälkään LMAO.")
+            print("Nälkätaso on liian korkea, HÄVISIT PELIN.")
+            input("\nPaina [Enter] jatkaaksesi.")
             return
-        
+
         if pelaaja.aika >= 1320:
-            print("Päivä päättyi.")
+            print("Päivä päättyi.\n")
 
             if pelaaja.nälkä <= 20:
                 print("Sait syötyä tarpeeksi, VOITIT PELIN.")
-
-            elif pelaaja.nälkä >= 20:
+            else:
                 print("Et saanut syötyä tarpeeksi, HÄVISIT PELIN.")
 
+            input("\nPaina [Enter] jatkaaksesi.")
             return
 
         tulosta_tilanne(pelaaja)
 
-        print("\n-- PELIN VALIKKO --\n")
+        print("\n--", pelaaja.sijainti.nimi.upper(), "--\n")
         print("Mitä haluat tehdä seuraavaksi?\n")
-        print(f"[1] Näytä '{pelaaja.sijainti.nimi}' Valikko")
-        print("[2] Liiku toiseen paikkaan")
-        print("[3] Näytä repun sisältö")
-        print("[4] Syö ruokaa")
-        print("\n[palaa] Palaa päävalikkoon")
 
-        try: 
-            valinta = input("\nValinta: ")
-            if valinta.lower() == "palaa":
-                return
-            
-            valintaluku = int(valinta) 
+        print("[1] Liiku")
 
+        if pelaaja.sijainti.nimi == "Ruokakauppa":
+            print("[2] Näytä hinnasto")
+            print("[3] Osta tuote")
+            print("[4] Näytä reppu")
+            print("[5] Syö ruokaa")
+
+        elif pelaaja.sijainti.nimi == "Ravintola":
+            print("[2] Näytä menu")
+            print("[3] Tilaa ruokaa")
+            print("[4] Auta henkilökuntaa")
+            print("[5] Näytä reppu")
+            print("[6] Syö ruokaa")
+
+        elif pelaaja.sijainti.nimi == "Panttilainaamo":
+            print("[2] Osta vihje - 4 euroa")
+            print("[3] Myy tavaraa")
+            print("[4] Näytä reppu")
+            print("[5] Syö ruokaa")
+
+        else:
+            print("[2] Tutki ympäristöä")
+            print("[3] Näytä reppu")
+            print("[4] Syö ruokaa")
+
+        print("\n[POISTU] Poistu pelistä")
+
+        valinta = input("\nValinta: ")
+
+        if valinta.lower() == "poistu":
+            return
+
+        try:
+            valinta = int(valinta)
         except ValueError:
             input("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
             continue
 
-        if valintaluku == 1:
-            tilan_valikko(pelaaja)
-
-        elif valintaluku == 2:
+        if valinta == 1:
             vaihda_tilaa(pelaaja)
 
-        elif valintaluku == 3:
+        elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 2:
+            kaupan_hinnasto(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 3:
+            osta_tuote(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 4:
             näytä_esineet_ja_tuotteet(pelaaja)
 
-        elif valintaluku == 4:
+        elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 5:
             syö_tuote(pelaaja)
-    
 
-# FUNKTIO, Joka ajetaan kun käyttäjä haluaa aloittaa pelin päävalikossa. Ensimmäiseksi Funktio luo pelin kaikki oliot, sekä niiden arvot ja yhteydet. Tämän jälkeen ohjelma luo Pelaajaolion palautetun "koti" olion avulla,
-# jonka jälkeen peli tulostaa ensimmäisen tarinatekstin ja käynnistää pelin [Enter] komennosta.
+        elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 2:
+            ravintolan_menu(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 3:
+            osta_tuote(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 4:
+            tee_töitä(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 5:
+            näytä_esineet_ja_tuotteet(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 6:
+            syö_tuote(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 2:
+            if pelaaja.raha - 4 < 0:
+                print("Sinulla ei ole tarpeeksi rahaa")
+
+            else:
+                pelaaja.raha -= 4
+                print("\nVihje: Joskus lähtötilanteesta voi löytyä jotakin uutta mitä ei ehkä odotakaan.")
+                input("Paina [Enter] jatkaaksesi.")
+
+        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 3:
+            myy_esine(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 4:
+            näytä_esineet_ja_tuotteet(pelaaja)
+
+        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 5:
+            syö_tuote(pelaaja)
+
+        elif valinta == 2:
+            tutki_tilaa(pelaaja)
+
+        elif valinta == 3:
+            näytä_esineet_ja_tuotteet(pelaaja)
+
+        elif valinta == 4:
+            syö_tuote(pelaaja)
+
+        else:
+            input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
+
+
 def aloita_peli(pelaajan_nimi):
+
     aloitustila = luodaan_pelin_maailma()
 
     pelaaja = Pelaaja(pelaajan_nimi, aloitustila)
@@ -204,7 +219,8 @@ def aloita_peli(pelaajan_nimi):
     print("\033[H\033[J", end="")
 
     pelin_intro()
-    input("[Enter] Aloita Peli")
+    input("\nPaina [Enter] aloittaaksesi pelin.")
 
     pelivalikko(pelaaja)
+
     return
