@@ -1,5 +1,5 @@
 from pelin_luokat import Pelaaja, Tila, Esine, Tuote
-from pelin_funktiot import tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, myy_esine, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
+from pelin_funktiot import pelin_kartta, tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, myy_esine, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
 from tarinatekstit import pelin_intro
 
 
@@ -135,6 +135,7 @@ def pelivalikko(pelaaja):
             print("[2] Tutki ympäristöä")
             print("[3] Näytä reppu")
             print("[4] Syö ruokaa")
+            print("[5] Näytä kartta")
 
         print("\n[POISTU] Poistu pelistä")
 
@@ -205,6 +206,9 @@ def pelivalikko(pelaaja):
 
         elif valinta == 4:
             syö_tuote(pelaaja)
+
+        elif valinta == 5:
+            pelin_kartta(pelaaja)
 
         else:
             input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
