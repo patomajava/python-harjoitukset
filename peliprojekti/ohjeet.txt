@@ -1,0 +1,17 @@
+OHJEET
+
+Tavoitteesi on saada tarpeeksi ruokaa ennen päivän päättymistä.
+
+Voit:
+- liikkua eri paikkojen välillä
+- tutkia ympäristöä
+- löytää ja myydä esineitä
+- ostaa ruokaa
+- syödä ruokaa
+- tehdä töitä ravintolassa
+
+Aika kuluu lähes kaikista toiminnoista, joten mieti tarkkaan mihin käytät aikasi.
+
+Jos nälkä saavuttaa 100, häviät pelin.
+
+Pelin lopussa sinun täytyy olla syönyt tarpeeksi.

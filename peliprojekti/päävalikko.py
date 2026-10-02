@@ -2,8 +2,8 @@ import time
 
 def pelaajan_tiedot():
 
-    print("Tervetuloa pelaamaan peliä!")
-    pelaajan_nimi = input("\nPelaajan nimi: ")
+#    print("Tervetuloa pelaamaan peliä!")
+    pelaajan_nimi = input("Pelaajan nimi: ")
 
     while True:
         try:
@@ -33,9 +33,10 @@ def päävalikko(pelaajan_nimi, pelaajan_ikä):
 
         print("-- PÄÄVALIKKO --\n")
         print("[1] ALOITA PELI")
-        print("[2] Tiedot pelaajasta")
-        print("[3] Kerro lempipelisi")
-        print("[4] Kerro muuta tietoa itsestäsi")
+        print("[2] PELIN OHJEET")
+        print("[3] Tiedot pelaajasta")
+        print("[4] Kerro lempipelisi")
+        print("[5] Kerro muuta tietoa itsestäsi")
         print("\n[LOPETA] Sammuta peli")
 
         pyydetty_toiminto = input("\nValinta: ")
@@ -54,13 +55,19 @@ def päävalikko(pelaajan_nimi, pelaajan_ikä):
         if pyydetty_toiminto == 1:
             return
 
-        elif pyydetty_toiminto == 2:
-            tulosta_tiedot(tietolista)
+        if pyydetty_toiminto == 2:
+            print("\033[H\033[J", end="")
+            with open("ohjeet.txt", "r", encoding="utf-8") as tiedosto:
+                print(tiedosto.read())
+            input("\nPaina [Enter] jatkaaksesi.")
 
         elif pyydetty_toiminto == 3:
-            tietolista[2] = lempi_peli()
+            tulosta_tiedot(tietolista)
 
         elif pyydetty_toiminto == 4:
+            tietolista[2] = lempi_peli()
+
+        elif pyydetty_toiminto == 5:
             tietolista[3] = muu_tieto()
 
         else:
