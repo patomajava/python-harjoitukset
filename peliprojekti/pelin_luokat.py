@@ -2,6 +2,7 @@ class Pelaaja:
     def __init__(self, nimi, sijainti):
         self.nimi = nimi
         self.sijainti = sijainti
+        self.salainen_kellari = None
 
         self.nälkä = 10
         self.raha = 0.0
@@ -11,7 +12,7 @@ class Pelaaja:
         self.tuotteet = []
 
         self.koti_kerrat = 0
-        self.salainen_tunneli_avattu = False
+        self.salainen_kellari_avattu = False
 
     def liiku_seuraavaan_paikkaan(self, uusi_tila):
         self.sijainti = uusi_tila

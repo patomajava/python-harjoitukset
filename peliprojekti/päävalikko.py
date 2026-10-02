@@ -2,7 +2,6 @@ import time
 
 def pelaajan_tiedot():
 
-#    print("Tervetuloa pelaamaan peliä!")
     pelaajan_nimi = input("Pelaajan nimi: ")
 
     while True:
@@ -23,10 +22,7 @@ def pelaajan_tiedot():
 
     return pelaajan_nimi, pelaajan_ikä
 
-
-def päävalikko(pelaajan_nimi, pelaajan_ikä):
-
-    tietolista = [pelaajan_nimi, pelaajan_ikä, "", ""]
+def päävalikko(tietolista):
 
     while True:
         print("\033[H\033[J", end="")
@@ -34,7 +30,7 @@ def päävalikko(pelaajan_nimi, pelaajan_ikä):
         print("-- PÄÄVALIKKO --\n")
         print("[1] ALOITA PELI")
         print("[2] PELIN OHJEET")
-        print("[3] Tiedot pelaajasta")
+        print("[3] Pelaajan tiedot")
         print("[4] Kerro lempipelisi")
         print("[5] Kerro muuta tietoa itsestäsi")
         print("\n[LOPETA] Sammuta peli")
@@ -47,37 +43,31 @@ def päävalikko(pelaajan_nimi, pelaajan_ikä):
 
         try:
             pyydetty_toiminto = int(pyydetty_toiminto)
-
         except ValueError:
             input("\nVirheellinen valinta, yritä uudelleen.\nPaina [Enter] jatkaaksesi.")
             continue
 
         if pyydetty_toiminto == 1:
             return
-
-        if pyydetty_toiminto == 2:
+        elif pyydetty_toiminto == 2:
             print("\033[H\033[J", end="")
+
             with open("ohjeet.txt", "r", encoding="utf-8") as tiedosto:
                 print(tiedosto.read())
-            input("\nPaina [Enter] jatkaaksesi.")
 
+            input("\nPaina [Enter] jatkaaksesi.")
         elif pyydetty_toiminto == 3:
             tulosta_tiedot(tietolista)
-
         elif pyydetty_toiminto == 4:
             tietolista[2] = lempi_peli()
-
         elif pyydetty_toiminto == 5:
             tietolista[3] = muu_tieto()
-
         else:
             input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
-
 
 def tulosta_tiedot(tietolista):
 
     print("\033[H\033[J", end="")
-
     print("- PELAAJAN TIEDOT -\n")
     print("Nimi:", tietolista[0])
     print("Ikä:", tietolista[1])
@@ -90,14 +80,12 @@ def tulosta_tiedot(tietolista):
 
     input("\n\nPaina [Enter] jatkaaksesi.")
 
-
 def lempi_peli():
 
     print("\033[H\033[J", end="")
     lempipeli = input("Kerro lempipelisi: ")
 
     return lempipeli
-
 
 def muu_tieto():
 

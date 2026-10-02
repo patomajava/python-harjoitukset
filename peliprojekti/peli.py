@@ -2,7 +2,6 @@ from pelin_luokat import Pelaaja, Tila, Esine, Tuote
 from pelin_funktiot import pelin_kartta, tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, myy_esine, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
 from tarinatekstit import pelin_intro
 
-
 def luodaan_pelin_maailma():
 
 # LUODAAN PELIN TILAT JA ALUEET.
@@ -18,13 +17,11 @@ def luodaan_pelin_maailma():
 
 # LUODAAN PELIN ESINEET | ESINEET OVAT ASIOITA JOITA PELAAJA VOI MYYDÄ
     avaimenperä = Esine("Avaimenperä", 3)
-    hieno_kivi_1 = Esine("Hieno kivi", 1)
-    hieno_kivi_2 = Esine("Hieno kivi", 1)
+    hieno_kivi = Esine("Hieno kivi", 1)
     lippis = Esine("Lippis", 6)
     kultaharkko = Esine("Kultaharkko", 500)
 
-    metsä.lisää_esine(hieno_kivi_1)
-#   metsä.lisää_esine(hieno_kivi_2)
+    metsä.lisää_esine(hieno_kivi)
     pihatie.lisää_esine(avaimenperä)
     puisto.lisää_esine(lippis)
     salainen_kellari.lisää_esine(kultaharkko)
@@ -49,7 +46,6 @@ def luodaan_pelin_maailma():
 
 # LUODAAN TILOILLE YHTEYDET TOISIIN TILOIHIN
     koti.lisää_yhteys("Pihatie", pihatie)
-    koti.lisää_yhteys("Salainen Kellari", salainen_kellari)
 
     salainen_kellari.lisää_yhteys("Koti", koti)
 
@@ -61,7 +57,7 @@ def luodaan_pelin_maailma():
     puisto.lisää_yhteys("Metsä", metsä)
     puisto.lisää_yhteys("Ruokakauppa", ruokakauppa)
     puisto.lisää_yhteys("Ravintola", ravintola)
-    puisto.lisää_yhteys("Tarvikekauppa", kirpputori)
+    puisto.lisää_yhteys("Kirpputori", kirpputori)
 
     metsä.lisää_yhteys("Merenranta", merenranta)
     metsä.lisää_yhteys("Puisto", puisto)
@@ -71,18 +67,17 @@ def luodaan_pelin_maailma():
 
     ruokakauppa.lisää_yhteys("Puisto", puisto)
     ruokakauppa.lisää_yhteys("Ravintola", ravintola)
-    ruokakauppa.lisää_yhteys("Tarvikekauppa", kirpputori)
+    ruokakauppa.lisää_yhteys("Kirpputori", kirpputori)
 
     ravintola.lisää_yhteys("Puisto", puisto)
     ravintola.lisää_yhteys("Ruokakauppa", ruokakauppa)
-    ravintola.lisää_yhteys("Tarvikekauppa", kirpputori)
+    ravintola.lisää_yhteys("Kirpputori", kirpputori)
 
     kirpputori.lisää_yhteys("Puisto", puisto)
     kirpputori.lisää_yhteys("Ravintola", ravintola)
     kirpputori.lisää_yhteys("Ruokakauppa", ruokakauppa)
 
-    return koti
-
+    return koti, salainen_kellari
 
 def pelivalikko(pelaaja):
 
@@ -94,10 +89,10 @@ def pelivalikko(pelaaja):
             input("\nPaina [Enter] jatkaaksesi.")
             return
 
-        if pelaaja.aika >= 1320:
+        if pelaaja.aika >= 1200:
             print("Päivä päättyi.\n")
 
-            if pelaaja.nälkä <= 20:
+            if pelaaja.nälkä <= 40:
                 print("Sait syötyä tarpeeksi, VOITIT PELIN.")
             else:
                 print("Et saanut syötyä tarpeeksi, HÄVISIT PELIN.")
@@ -190,19 +185,18 @@ def pelivalikko(pelaaja):
         elif valinta == 4:
             syö_tuote(pelaaja)
         elif valinta == 5:
-            pelin_kartta(pelaaja)
+            pelin_kartta()
         else:
             input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
 
-
 def aloita_peli(pelaajan_nimi):
 
-    aloitustila = luodaan_pelin_maailma()
+    aloitustila, salainen_kellari = luodaan_pelin_maailma()
 
     pelaaja = Pelaaja(pelaajan_nimi, aloitustila)
+    pelaaja.salainen_kellari = salainen_kellari
 
     print("\033[H\033[J", end="")
-
     pelin_intro()
     input("\nPaina [Enter] aloittaaksesi pelin.")
 

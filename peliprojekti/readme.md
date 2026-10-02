@@ -1,16 +1,28 @@
-# Ohjelmisto 1 - Peliprojekti - "Nälkäpeli - Oikea nälkä?"
+# Ohjelmisto 1 - Peliprojekti - "Nälkäpeli - Oikea nälkä tai Ei Nälkää"
 
 **Lauri Paasonen**
 
-
-YK:n kestävän kehityksen aihe 2: Ei nälkää.
-
-Pelin tavoite: Täytä ruokapalkkiasi tarpeeksi ennen kuin päivä päättyy.
+YK kestävän kehityksen tavoite 2: Ei nälkää
 
 
-Pelin tarina: 
+Pelaajan tavoite:
 
-Peli alkaa Klo 08:00 aamulla. Pelaajalla ei ole kotona ruokaa, ja hän lähtee ruoanhaku matkalle. Matkalla on mahdollisuus tehdä monia erilaisia asioita. Peli päättyy kun kello on 22:00 tai kun pelaajan nälkätaso
-kasvaa liian suureksi, jos nälkäpalkki tulee täyteen, pelaaja häviää heti. Jos pelaajan nälkätaso on alle ??%, hän voittaa pelin. Muutoin pelaaja häviää.
+Pelaajan tavoitteena on löytää päivän aikana tarpeeksi ruokaa ja pitää ruokapalkki riittävän korkealla ennen kuin päivä päättyy.
 
-Pelaajan tarinaan kuuluu palautuspullojen kerääminen, tavaroiden myyminen, tuotteiden ostaminen, mahdollisten salaisuuksien löytäminen, ja muiden ihmisten auttaminen.
+
+Pelin tarina:
+
+Peli alkaa kello 08:00 aamulla. Pelaajalla ei ole kotona ruokaa, joten hän lähtee ruoanhakumatkalle.
+Matkan aikana pelaajalla on mahdollisuus tehdä monia erilaisia asioita. Hän voi esimerkiksi kerätä löytää ja myydä esineitä, ostaa ruokaa, auttaa muita ihmisiä sekä löytää mahdollisia salaisuuksia.
+Peli päättyy kello 20:00 tai silloin, kun pelaajan nälkätaso menee täyteen. Pelaaja häviää heti, jos nälkätaso menee täyteen. Päivän lopussa pelaaja voittaa, jos nälkätaso on tarpeeksi matala.
+
+
+Pelin sisältö:
+
+Ruoan etsiminen ja ostaminen
+Nälkä- ja aikajärjestelmä
+Esineiden kerääminen ja myyminen
+Rahan ansaitseminen
+Muiden ihmisten auttaminen
+Pelimaailman tutkiminen
+Salaisuuksien löytäminen

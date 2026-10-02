@@ -1,8 +1,15 @@
-Tervetuloa peliin!
+EI NÄLKÄÄ
 
-Heräät aamulla nälkäisenä. Jääkaappi ja koko muu keittiösi on tyhjä, eikä sinulla ole rahaa.
+Heräät aamulla nälkäisenä.
 
-Edessäsi on kokonainen päivä aikaa löytää jotain syötävää. Voit tutkia ympäristöä, liikkua eri paikkojen välillä
-ja hankkia ruokaa, mutta sekä aikasi että rahasi ovat rajalliset. 
+Jääkaappi, pakastin ja kaikki keittiön kaapit ovat tyhjiä.
+Lompakossasi ei ole rahaa.
 
-Pystytkö hankkimaan tarpeeksi ruokaa ennen kuin aika loppuu?
+Edessäsi on kokonainen päivä aikaa löytää jotain syötävää.
+
+Tutki ympäristöä, etsi tavaroita, ansaitse rahaa ja pidä
+huolta siitä, ettei nälkä pääse kasvamaan liian suureksi.
+
+Aika ei kuitenkaan pysähdy.
+
+Onnea matkaan!
