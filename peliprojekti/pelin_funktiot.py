@@ -1,4 +1,5 @@
 import time
+from tarinatekstit import koti_teksti, pihatie_teksti, metsä_teksti, ranta_teksti, puisto_teksti, ruokakauppa_teksti, ravintola_teksti, kirpputori_teksti
 
 def pelin_kartta(pelaaja):
 
@@ -12,20 +13,20 @@ def pelin_kartta(pelaaja):
     ║   KOTI    ║═══════║  PIHATIE  ║
     ╚═══════════╝       ╚═════╤═════╝
                               │
-                  ┌───────────┴─────────┐
-                  │                     │
-                  │                     │
-                  ▼                     ▼
-           ╔═══════╗               ╔══════════╗
-           ║ METSÄ ║               ║  PUISTO  ║
-           ╚═══════╝               ╚════╤═════╝
-            │                           │
-            │              ┌────────────┼──────────────┐
-            ▼              │            │              │
-    ╔════════════╗         ▼            ▼              ▼
-    ║ MERENRANTA ║    ╔═════════╗ ╔═══════════╗ ╔════════════════╗
-    ╚════════════╝    ║RAVINTOLA║ ║RUOKAKAUPPA║ ║ PANTTILAINAAMO ║
-                      ╚═════════╝ ╚═══════════╝ ╚════════════════╝
+                      ┌───────┴───────┐
+                      │               │
+                      │               │
+                      ▼               ▼
+                 ╔═══════╗         ╔════════╗
+         ┌───────║ METSÄ ║         ║ PUISTO ║
+         │       ╚═══════╝         ╚════╤═══╝
+         │                              │
+         │                 ┌────────────┼────────────┐
+         │                 │            │            │
+         ▼                 ▼            ▼            ▼
+    ╔══════════╗      ╔═════════╗ ╔═══════════╗ ╔══════════╗
+    ║MERENRANTA║      ║RAVINTOLA║ ║RUOKAKAUPPA║ ║KIRPPUTORI║
+    ╚══════════╝      ╚═════════╝ ╚═══════════╝ ╚══════════╝
 """)
     input("\nPaina [Enter] jatkaaksesi.")
 
@@ -83,8 +84,8 @@ def tutki_tilaa(pelaaja):
         esine = tila.esineet[i]
         print(f"{esine.nimi}")
 
-    print("\n-------------------\n")
-    print(f"\n[1] Ota {esine.nimi} reppuun")
+    print("\n---------------------------\n")
+    print(f"[1] Ota {esine.nimi} reppuun")
     print("[0] Peruuta")
 
     while True:
@@ -137,6 +138,48 @@ def vaihda_tilaa(pelaaja):
     uusi_tila = yhteydet[valinta - 1]
 
     pelaaja.liiku_seuraavaan_paikkaan(uusi_tila)
+    if pelaaja.sijainti.nimi == "Koti":
+        print("\033[H\033[J", end="")
+        koti_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Pihatie":
+        print("\033[H\033[J", end="")
+        pihatie_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Metsä":
+        print("\033[H\033[J", end="")
+        metsä_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Merenranta":
+        print("\033[H\033[J", end="")
+        ranta_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Puisto":
+        print("\033[H\033[J", end="")
+        puisto_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Ruokakauppa":
+        print("\033[H\033[J", end="")
+        ruokakauppa_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Ravintola":
+        print("\033[H\033[J", end="")
+        ravintola_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+
+    elif pelaaja.sijainti.nimi == "Kirpputori":
+        print("\033[H\033[J", end="")
+        kirpputori_teksti()
+        input("\nPaina [Enter] jatkaaksesi.")
+    else:
+        print("Töttislörö")
+    
     pelaaja.ajankulu(30)
 
 

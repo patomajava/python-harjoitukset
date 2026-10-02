@@ -13,7 +13,7 @@ def luodaan_pelin_maailma():
     metsä = Tila("Metsä")
     ruokakauppa = Tila("Ruokakauppa")
     ravintola = Tila("Ravintola")
-    panttilainaamo = Tila("Panttilainaamo")
+    kirpputori = Tila("Kirpputori")
     salainen_kellari = Tila("Salainen Kellari")
 
 # LUODAAN PELIN ESINEET | ESINEET OVAT ASIOITA JOITA PELAAJA VOI MYYDÄ
@@ -61,7 +61,7 @@ def luodaan_pelin_maailma():
     puisto.lisää_yhteys("Metsä", metsä)
     puisto.lisää_yhteys("Ruokakauppa", ruokakauppa)
     puisto.lisää_yhteys("Ravintola", ravintola)
-    puisto.lisää_yhteys("Tarvikekauppa", panttilainaamo)
+    puisto.lisää_yhteys("Tarvikekauppa", kirpputori)
 
     metsä.lisää_yhteys("Merenranta", merenranta)
     metsä.lisää_yhteys("Puisto", puisto)
@@ -71,15 +71,15 @@ def luodaan_pelin_maailma():
 
     ruokakauppa.lisää_yhteys("Puisto", puisto)
     ruokakauppa.lisää_yhteys("Ravintola", ravintola)
-    ruokakauppa.lisää_yhteys("Tarvikekauppa", panttilainaamo)
+    ruokakauppa.lisää_yhteys("Tarvikekauppa", kirpputori)
 
     ravintola.lisää_yhteys("Puisto", puisto)
     ravintola.lisää_yhteys("Ruokakauppa", ruokakauppa)
-    ravintola.lisää_yhteys("Tarvikekauppa", panttilainaamo)
+    ravintola.lisää_yhteys("Tarvikekauppa", kirpputori)
 
-    panttilainaamo.lisää_yhteys("Puisto", puisto)
-    panttilainaamo.lisää_yhteys("Ravintola", ravintola)
-    panttilainaamo.lisää_yhteys("Ruokakauppa", ruokakauppa)
+    kirpputori.lisää_yhteys("Puisto", puisto)
+    kirpputori.lisää_yhteys("Ravintola", ravintola)
+    kirpputori.lisää_yhteys("Ruokakauppa", ruokakauppa)
 
     return koti
 
@@ -125,7 +125,7 @@ def pelivalikko(pelaaja):
             print("[5] Näytä reppu")
             print("[6] Syö ruokaa")
 
-        elif pelaaja.sijainti.nimi == "Panttilainaamo":
+        elif pelaaja.sijainti.nimi == "Kirpputori":
             print("[2] Osta vihje - 4 euroa")
             print("[3] Myy tavaraa")
             print("[4] Näytä reppu")
@@ -152,64 +152,45 @@ def pelivalikko(pelaaja):
 
         if valinta == 1:
             vaihda_tilaa(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 2:
             kaupan_hinnasto(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 3:
             osta_tuote(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 4:
             näytä_esineet_ja_tuotteet(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ruokakauppa" and valinta == 5:
             syö_tuote(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 2:
             ravintolan_menu(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 3:
             osta_tuote(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 4:
             tee_töitä(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 5:
             näytä_esineet_ja_tuotteet(pelaaja)
-
         elif pelaaja.sijainti.nimi == "Ravintola" and valinta == 6:
             syö_tuote(pelaaja)
-
-        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 2:
+        elif pelaaja.sijainti.nimi == "Kirpputori" and valinta == 2:
             if pelaaja.raha - 4 < 0:
                 print("Sinulla ei ole tarpeeksi rahaa")
-
             else:
                 pelaaja.raha -= 4
-                print("\nVihje: Joskus lähtötilanteesta voi löytyä jotakin uutta mitä ei ehkä odotakaan.")
+                print("\nVihje: Joskus lähtötilanteesta voi löytyä jotain uutta, mitä ei ehkä odottanutkaan.")
                 input("Paina [Enter] jatkaaksesi.")
-
-        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 3:
+        elif pelaaja.sijainti.nimi == "Kirpputori" and valinta == 3:
             myy_esine(pelaaja)
-
-        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 4:
+        elif pelaaja.sijainti.nimi == "Kirpputori" and valinta == 4:
             näytä_esineet_ja_tuotteet(pelaaja)
-
-        elif pelaaja.sijainti.nimi == "Panttilainaamo" and valinta == 5:
+        elif pelaaja.sijainti.nimi == "Kirpputori" and valinta == 5:
             syö_tuote(pelaaja)
-
         elif valinta == 2:
             tutki_tilaa(pelaaja)
-
         elif valinta == 3:
             näytä_esineet_ja_tuotteet(pelaaja)
-
         elif valinta == 4:
             syö_tuote(pelaaja)
-
         elif valinta == 5:
             pelin_kartta(pelaaja)
-
         else:
             input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
 
