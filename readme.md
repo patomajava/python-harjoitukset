@@ -1,4 +1,4 @@
-# Ohjelmisto 1 - Python harjoitukset
+# Ohjelmisto 1 - Python-harjoitukset
 
 **Lauri Paasonen**
 
@@ -16,7 +16,7 @@ Tein tehtävät 1, 2, 3, 4.
 
 ## Moduuli 5
 
-Tein tehtävät 1, 2, 3, 4, 5, X.
+Tein tehtävät 1, 2, 3, 4, 5.
 
 ## Moduuli 6
 
@@ -41,5 +41,3 @@ Tein tehtävät 1, 2, 3, 4.
 ## Moduuli 11
 
 Tein tehtävät 1, 2.
-
-## Moduuli 12
