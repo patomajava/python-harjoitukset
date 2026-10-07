@@ -2,7 +2,11 @@
 
 **Lauri Paasonen**
 
-YK kestävän kehityksen tavoite 2: Ei nälkää
+
+YK kestävän kehityksen tavoitteet:
+
+Tavoite 2 - Ei nälkää - Pelaajan tehtävä on etsiä itselleen ruokaa
+Tavoite 13 - Ilmastotekoja - Pelaaja voi nostaa maasta esineitä ja "kierrättää" niitä kirpputorilla.
 
 
 Pelaajan tavoite:

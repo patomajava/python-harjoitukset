@@ -25,8 +25,8 @@ def pelaajan_tiedot():
 def päävalikko(tietolista):
 
     while True:
-        print("\033[H\033[J", end="")
 
+        print("\033[H\033[J", end="")
         print("-- PÄÄVALIKKO --\n")
         print("[1] ALOITA PELI")
         print("[2] PELIN OHJEET")
@@ -50,12 +50,12 @@ def päävalikko(tietolista):
         if pyydetty_toiminto == 1:
             return
         elif pyydetty_toiminto == 2:
+            
             print("\033[H\033[J", end="")
-
             with open("ohjeet.txt", "r", encoding="utf-8") as tiedosto:
                 print(tiedosto.read())
-
             input("\nPaina [Enter] jatkaaksesi.")
+            
         elif pyydetty_toiminto == 3:
             tulosta_tiedot(tietolista)
         elif pyydetty_toiminto == 4:

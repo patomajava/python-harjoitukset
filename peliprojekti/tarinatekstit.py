@@ -1,5 +1,4 @@
 def pelin_intro():
-
     print("""Päivä on alkanut.
 
 Heräät kotona ja tunnet heti, että vatsasi kurnii.
