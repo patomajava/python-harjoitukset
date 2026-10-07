@@ -46,11 +46,11 @@ while True:
     
 print("")
 print("Rekisterikilpi |   Huippunopeus  | Kuljettu matka")
-print("--------------------------------------------------")
+print("-------------------------------------------------")
 
 for auto in autot:
     print(f"{auto.rekisteritunnus:<14} | "
           f"{auto.huippunopeus:<10} km/h | "
           f"{auto.matka:<12} km")
 
-print("--------------------------------------------------\n")
+print("-------------------------------------------------\n")
