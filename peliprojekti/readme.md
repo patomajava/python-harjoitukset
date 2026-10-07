@@ -12,12 +12,12 @@ Pelaaja voi nostaa maasta esineitä ja "kierrättää" niitä kirpputorilla.
 
 ## Pelaajan tavoite:
 
-Pelaajan tavoitteena on löytää päivän aikana tarpeeksi ruokaa ja pitää ruokapalkki riittävän korkealla ennen kuin päivä päättyy.
+Pelaajan tavoitteena on löytää päivän aikana tarpeeksi ruokaa ja pitää nälkätaso tarpeeksi pienenä ennen kuin päivä päättyy.
 
 ## Pelin tarina:
 
-Peli alkaa kello 08:00 aamulla. Pelaajalla ei ole kotona ruokaa, joten hän lähtee ruoanhakumatkalle.
-Matkan aikana pelaajalla on mahdollisuus tehdä monia erilaisia asioita. Hän voi esimerkiksi kerätä löytää ja myydä esineitä, ostaa ruokaa, auttaa muita ihmisiä sekä löytää mahdollisia salaisuuksia.
+Peli alkaa kello 08:00 aamulla. Pelaajalla ei ole kotona ruokaa, joten hän lähtee ruoanhankkimismatkalle.
+Matkan aikana pelaajalla on mahdollisuus tehdä monia erilaisia asioita. Hän voi esimerkiksi löytää,kerätä ja myydä esineitä, ostaa ruokaa, auttaa muita ihmisiä sekä löytää mahdollisia salaisuuksia.
 Peli päättyy kello 20:00 tai silloin, kun pelaajan nälkätaso menee täyteen. Pelaaja häviää heti, jos nälkätaso menee täyteen. Päivän lopussa pelaaja voittaa, jos nälkätaso on tarpeeksi matala.
 
 ## Pelin sisältö:
