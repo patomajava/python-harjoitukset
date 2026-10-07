@@ -1,4 +1,4 @@
-# Ohjelmisto 1 - Peliprojekti - "Nälkäpeli - Oikea nälkä tai Ei Nälkää"
+# Ohjelmisto 1 - Peliprojekti - "Ei Nälkää"
 
 **Lauri Paasonen**
 

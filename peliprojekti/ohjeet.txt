@@ -5,14 +5,16 @@ TAVOITE:
 Hanki päivän aikana tarpeeksi ruokaa ja pidä nälkäsi
 mahdollisimman matalana.
 
-Jos nälkä saavuttaa 100, häviät.
+Jos nälkä saavuttaa 100, häviät heti.
 
-Pelin lopussa nälkä saa olla korkeintaan 40, jotta voitat.
+Pelin lopussa nälkä saa olla korkeintaan 40, tai muuten häviät.
+
+Jos nälkötasosi on alle 40 kun päivä päättyy, voitat pelin.
 
 LIIKKUMINEN:
 
-Valitse Liiku pelivalikosta ja valitse haluamasi paikka.
-Liikkuminen kuluttaa aikaa ja kasvataa nälkää.
+Valitse "Liiku" pelivalikosta ja valitse haluamasi paikka.
+Liikkuminen kuluttaa aikaa ja kasvattaa nälkää.
 
 RUOKA:
 
@@ -29,8 +31,8 @@ esineitä tai työskentelemällä ravintolassa.
 
 AIKA:
 
-Aika kuluu lähes kaikista toiminnoista.
-Pidä siis silmällä kelloa.
+Aika kuluu ja nälkä kasvaa lähes kaikista toiminnoista.
+Pidä siis silmällä kelloa ja nälkätasoa.
 
 TUTKI YMPÄRISTÖÄ:
 

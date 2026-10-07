@@ -1,6 +1,7 @@
 class Pelaaja:
-    def __init__(self, nimi, sijainti):
+    def __init__(self, nimi, ikä, sijainti):
         self.nimi = nimi
+        self.ikä = ikä
         self.sijainti = sijainti
         self.salainen_kellari = None
 
@@ -33,8 +34,7 @@ class Pelaaja:
 
     def ajankulu(self, aika):
         self.aika += aika
-        self.nälkä += aika * 15 / 60
-
+        self.nälkä += aika * 14 / 60
         if self.nälkä > 100:
             self.nälkä = 100
 
@@ -58,12 +58,10 @@ class Tila:
     def lisää_yhteys(self, nimi, tila):
         self.yhteydet[nimi] = tila
 
-
 class Esine:
     def __init__(self, nimi, arvo):
         self.nimi = nimi
         self.arvo = arvo
-
 
 class Tuote:
     def __init__(self, nimi, hinta, ravintoarvo):

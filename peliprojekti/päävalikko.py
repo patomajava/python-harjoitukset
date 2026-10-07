@@ -28,7 +28,7 @@ def päävalikko(tietolista):
 
         print("\033[H\033[J", end="")
         print("-- PÄÄVALIKKO --\n")
-        print("[1] ALOITA PELI")
+        print("[1] PELAA PELIÄ")
         print("[2] PELIN OHJEET")
         print("[3] Pelaajan tiedot")
         print("[4] Kerro lempipelisi")

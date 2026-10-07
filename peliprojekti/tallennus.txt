@@ -1,0 +1,33 @@
+nimi=Lauri
+ikä=20
+
+sijainti=Puisto
+nälkä=59.0
+raha=0.0
+aika=690
+
+koti_kerrat=2
+
+salainen_kellari_avattu=True
+
+pelaajan_esineet=Kultaharkko:500
+
+pelaajan_tuotteet=
+
+tila_Koti_esineet=
+
+tila_Salainen kellari_esineet=
+
+tila_Pihatie_esineet=Avaimenperä:3
+
+tila_Puisto_esineet=Lippis:6
+
+tila_Metsä_esineet=Hieno kivi:1
+
+tila_Merenranta_esineet=
+
+tila_Ruokakauppa_esineet=
+
+tila_Ravintola_esineet=
+
+tila_Kirpputori_esineet=

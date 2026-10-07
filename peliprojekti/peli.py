@@ -1,6 +1,7 @@
 from pelin_luokat import Pelaaja, Tila, Esine, Tuote
 from pelin_funktiot import pelin_kartta, tulosta_tilanne, näytä_esineet_ja_tuotteet, tutki_tilaa, vaihda_tilaa, myy_esine, osta_tuote, syö_tuote, ravintolan_menu, kaupan_hinnasto, tee_töitä
 from tarinatekstit import pelin_intro
+from tallennus import tallenna_peli
 
 def luodaan_pelin_maailma():
 
@@ -13,7 +14,7 @@ def luodaan_pelin_maailma():
     ruokakauppa = Tila("Ruokakauppa")
     ravintola = Tila("Ravintola")
     kirpputori = Tila("Kirpputori")
-    salainen_kellari = Tila("Salainen Kellari")
+    salainen_kellari = Tila("Salainen kellari")
 
 # LUODAAN PELIN ESINEET | ESINEET OVAT ASIOITA JOITA PELAAJA VOI MYYDÄ
     avaimenperä = Esine("Avaimenperä", 3)
@@ -77,9 +78,60 @@ def luodaan_pelin_maailma():
     kirpputori.lisää_yhteys("Ravintola", ravintola)
     kirpputori.lisää_yhteys("Ruokakauppa", ruokakauppa)
 
-    return koti, salainen_kellari
+    kaikki_tilat = {"Koti": koti, "Salainen kellari": salainen_kellari, "Pihatie": pihatie, "Puisto": puisto, "Metsä": metsä, "Merenranta": merenranta, "Ruokakauppa": ruokakauppa, "Ravintola": ravintola, "Kirpputori": kirpputori}
 
-def pelivalikko(pelaaja):
+    return kaikki_tilat
+
+def lataa_pelaaja(tiedot):
+
+    kaikki_tilat = luodaan_pelin_maailma()
+    sijainti = kaikki_tilat[tiedot["sijainti"]]
+    pelaaja = Pelaaja(tiedot["nimi"], int(tiedot["ikä"]), sijainti)
+    pelaaja.salainen_kellari = kaikki_tilat["Salainen kellari"]
+
+    pelaaja.nälkä = float(tiedot["nälkä"])
+    pelaaja.raha = float(tiedot["raha"])
+    pelaaja.aika = int(tiedot["aika"])
+
+    pelaaja.koti_kerrat = int(tiedot["koti_kerrat"])
+    pelaaja.salainen_kellari_avattu = tiedot["salainen_kellari_avattu"] == "True"
+
+    if tiedot["pelaajan_esineet"]:
+        for esineen_tieto in tiedot["pelaajan_esineet"].split("|"):
+            nimi, arvo = esineen_tieto.split(":")
+
+            esine = Esine(nimi, int(arvo))
+            pelaaja.esineet.append(esine)
+
+    if tiedot["pelaajan_tuotteet"]:
+        for tuotteen_tieto in tiedot["pelaajan_tuotteet"].split("|"):
+            nimi, hinta, ravintoarvo = tuotteen_tieto.split(":")
+
+            tuote = Tuote(nimi, float(hinta), int(ravintoarvo))
+            pelaaja.tuotteet.append(tuote)
+
+    for nimi, tila in kaikki_tilat.items():
+
+        avain = f"tila_{nimi}_esineet"
+        if avain not in tiedot:
+            continue
+        tila.esineet.clear()
+
+        if tiedot[avain]:
+            for esineen_tieto in tiedot[avain].split("|"):
+                nimi, arvo = esineen_tieto.split(":")
+                esine = Esine(nimi, int(arvo))
+                tila.esineet.append(esine)
+
+    if pelaaja.salainen_kellari_avattu == True:
+
+        koti = kaikki_tilat["Koti"]
+        if "Salainen kellari" not in koti.yhteydet:
+            koti.lisää_yhteys("Salainen kellari", pelaaja.salainen_kellari)
+
+    return pelaaja, kaikki_tilat
+
+def pelivalikko(pelaaja, kaikki_tilat):
 
     while True:
         print("\033[H\033[J", end="")
@@ -137,6 +189,9 @@ def pelivalikko(pelaaja):
         valinta = input("\nValinta: ")
 
         if valinta.lower() == "poistu":
+            tallenna_peli(pelaaja, kaikki_tilat)
+
+            input("\nPeli tallennettu.\nPaina [Enter] jatkaaksesi.")
             return
 
         try:
@@ -189,17 +244,12 @@ def pelivalikko(pelaaja):
         else:
             input("\nNumerolla ei löytynyt toimintoa.\nPaina [Enter] jatkaaksesi.")
 
-def aloita_peli(pelaajan_nimi):
-
-    aloitustila, salainen_kellari = luodaan_pelin_maailma()
-
-    pelaaja = Pelaaja(pelaajan_nimi, aloitustila)
-    pelaaja.salainen_kellari = salainen_kellari
+def aloita_peli(pelaaja, kaikki_tilat):
 
     print("\033[H\033[J", end="")
     pelin_intro()
     input("\nPaina [Enter] aloittaaksesi pelin.")
 
-    pelivalikko(pelaaja)
+    pelivalikko(pelaaja, kaikki_tilat)
 
     return
