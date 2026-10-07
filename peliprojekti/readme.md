@@ -5,7 +5,7 @@
 
 YK kestävän kehityksen tavoitteet:
 
-Tavoite 2 - Ei nälkää - Pelaajan tehtävä on etsiä itselleen ruokaa
+Tavoite 2 - Ei nälkää - Pelaajan tehtävä on etsiä itselleen ruokaa.
 Tavoite 13 - Ilmastotekoja - Pelaaja voi nostaa maasta esineitä ja "kierrättää" niitä kirpputorilla.
 
 
@@ -23,10 +23,16 @@ Peli päättyy kello 20:00 tai silloin, kun pelaajan nälkätaso menee täyteen.
 
 Pelin sisältö:
 
-Ruoan etsiminen ja ostaminen
-Nälkä- ja aikajärjestelmä
-Esineiden kerääminen ja myyminen
-Rahan ansaitseminen
-Muiden ihmisten auttaminen
-Pelimaailman tutkiminen
-Salaisuuksien löytäminen
+Ruoan etsiminen ja ostaminen.
+
+Nälkä- ja aikajärjestelmä.
+
+Esineiden kerääminen ja myyminen.
+
+Rahan ansaitseminen.
+
+Muiden ihmisten auttaminen.
+
+Pelimaailman tutkiminen.
+
+Salaisuuksien löytäminen.
