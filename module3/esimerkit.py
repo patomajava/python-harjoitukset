@@ -26,6 +26,7 @@ import random
 # print(f"Ympyrän pinta-ala on {ympyran_pinta_ala:.2f}")
 # print(f"Neliön pinta-ala on {nelion_pinta_ala:.2f}")
 
+print("")
 
 dice1 = random.randint(1,6)
 dice2 = random.randint(1,20)
