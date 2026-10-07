@@ -3,7 +3,6 @@ class Julkaisu():
         self.julkaisun_nimi = nimi
 
 
-
 class Kirja(Julkaisu):
     def __init__(self, nimi, kirjoittaja, sivumäärä):
         super().__init__(nimi)
@@ -16,7 +15,6 @@ class Kirja(Julkaisu):
         print(self.sivumäärä)
 
 
-
 class Lehti(Julkaisu):
     def __init__(self, nimi, päätoimittaja):
         super().__init__(nimi)
@@ -27,9 +25,10 @@ class Lehti(Julkaisu):
         print(self.päätoimittaja)
 
 
+
 aku_ankka = Lehti("Aku Ankka", "Aki Hyyppä")
 hytti_no_6 = Kirja("Hytti n:o 6", "Rosa Liksom", "200 sivua")
 
 aku_ankka.tulosta_tiedot()
-print("")
+print(f"")
 hytti_no_6.tulosta_tiedot()
